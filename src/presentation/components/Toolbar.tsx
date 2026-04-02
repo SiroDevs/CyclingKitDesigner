@@ -1,0 +1,98 @@
+'use client'
+
+import { KitType, ViewType } from '@/types/types'
+
+interface ToolbarProps {
+  kit: KitType
+  view: ViewType
+  onKitChange: (kit: KitType) => void
+  onViewChange: (view: ViewType) => void
+  onReset: () => void
+}
+
+function SegmentedControl<T extends string>({
+  options,
+  value,
+  onChange,
+}: {
+  options: { label: string; value: T }[]
+  value: T
+  onChange: (v: T) => void
+}) {
+  return (
+    <div className="flex bg-gray-100 rounded-lg p-0.5 gap-0.5">
+      {options.map((opt) => (
+        <button
+          key={opt.value}
+          onClick={() => onChange(opt.value)}
+          className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
+            value === opt.value
+              ? 'bg-white text-gray-900 shadow-sm'
+              : 'text-gray-500 hover:text-gray-700'
+          }`}
+        >
+          {opt.label}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+export default function Toolbar({
+  kit,
+  view,
+  onKitChange,
+  onViewChange,
+  onReset,
+}: ToolbarProps) {
+  return (
+    <header className="flex items-center justify-between px-5 py-3 border-b border-gray-100 bg-white">
+      {/* Logo */}
+      <div className="flex items-center gap-2.5">
+        <div className="w-7 h-7 bg-gray-900 rounded-lg flex items-center justify-center">
+          <svg viewBox="0 0 24 24" className="w-4 h-4 text-white fill-current">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 18a8 8 0 110-16 8 8 0 010 16z" opacity="0.3"/>
+          </svg>
+        </div>
+        <span className="text-sm font-semibold text-gray-900 tracking-tight">
+          Kit Designer
+        </span>
+      </div>
+
+      {/* Center controls */}
+      <div className="flex items-center gap-3">
+        <SegmentedControl
+          options={[
+            { label: 'Jersey', value: 'jersey' as KitType },
+            { label: 'Bib Shorts', value: 'bibs' as KitType },
+          ]}
+          value={kit}
+          onChange={onKitChange}
+        />
+        <div className="w-px h-5 bg-gray-200" />
+        <SegmentedControl
+          options={[
+            { label: 'Front', value: 'front' as ViewType },
+            { label: 'Back', value: 'back' as ViewType },
+          ]}
+          value={view}
+          onChange={onViewChange}
+        />
+      </div>
+
+      {/* Actions */}
+      <div className="flex items-center gap-2">
+        <button
+          onClick={onReset}
+          className="px-3 py-1.5 text-sm text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-all"
+        >
+          Reset
+        </button>
+        <button className="px-4 py-1.5 text-sm font-medium bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-colors">
+          Export
+        </button>
+      </div>
+    </header>
+  )
+}
