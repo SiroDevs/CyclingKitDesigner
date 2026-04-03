@@ -1,5 +1,5 @@
-import { DesignerState, KitType, ViewType, PatternType } from '@/types/types'
-import { JERSEY_PARTS, BIBS_PARTS, KIT_PRESETS } from '.'
+import { DesignerState, KitType, ViewType, PatternType } from './types'
+import { JERSEY_PARTS, BIBS_PARTS, KIT_PRESETS } from './constants'
 
 export type DesignerAction =
   | { type: 'SET_KIT'; payload: KitType }

@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { PatternType } from '@/types/types'
-import { hslToHex, hexToHsl, isValidHex } from '@/lib'
-import { QUICK_SWATCHES, PATTERNS } from '@/lib'
-import { SLPicker } from '.'
+import { PatternType } from '@/domain/lib/types'
+import { hslToHex, hexToHsl, isValidHex } from '@/domain/lib/colorUtils'
+import { QUICK_SWATCHES, PATTERNS } from '@/domain/lib/constants'
+import SLPicker from './SLPicker'
 
 interface ColorPanelProps {
   partId: string
@@ -15,7 +15,7 @@ interface ColorPanelProps {
   onPatternChange: (pattern: PatternType) => void
 }
 
-export function ColorPanel({
+export default function ColorPanel({
   partId,
   partLabel,
   currentColor,

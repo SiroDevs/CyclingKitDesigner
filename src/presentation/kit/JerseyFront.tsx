@@ -1,28 +1,27 @@
 'use client'
 
 import { PatternDef } from '@/types/types'
-import { lightenDarken } from '@/lib'
+import { lightenDarken } from '@/lib/colorUtils'
 
-interface JerseyBackProps {
+interface JerseyFrontProps {
   getColor: (id: string) => string
   getPatFill: (id: string) => PatternDef
   selectedPart: string | null
   onPartClick: (id: string) => void
 }
 
-export function JerseyBack({
+export function JerseyFront({
   getColor,
   getPatFill,
   selectedPart,
   onPartClick,
-}: JerseyBackProps) {
-  const back = getPatFill('jersey_back')
+}: JerseyFrontProps) {
+  const body = getPatFill('jersey_body')
   const sleeves = getPatFill('jersey_sleeves')
   const collar = getPatFill('jersey_collar')
   const side = getPatFill('jersey_side_panels')
-  const pockets = getPatFill('jersey_pockets')
 
-  const allDefs = [back.defs, sleeves.defs, collar.defs, side.defs, pockets.defs]
+  const allDefs = [body.defs, sleeves.defs, collar.defs, side.defs]
     .filter(Boolean)
     .join('')
 
@@ -36,6 +35,8 @@ export function JerseyBack({
     onPartClick(id)
   }
 
+  const collarColor = getColor('jersey_collar')
+
   return (
     <svg
       viewBox="0 0 280 340"
@@ -44,7 +45,7 @@ export function JerseyBack({
     >
       <defs dangerouslySetInnerHTML={{ __html: allDefs }} />
 
-      {/* Sleeves */}
+      {/* Left sleeve */}
       <g
         onClick={clickHandler('jersey_sleeves')}
         className={`cursor-pointer transition-all ${sel('jersey_sleeves')}`}
@@ -55,17 +56,26 @@ export function JerseyBack({
           stroke="rgba(0,0,0,0.12)"
           strokeWidth="0.8"
         />
+        {/* Cuff */}
         <path
           d="M8,100 L18,140 L23,138 L13,100Z"
           fill={lightenDarken(getColor('jersey_sleeves'), -25)}
           stroke="none"
         />
+      </g>
+
+      {/* Right sleeve */}
+      <g
+        onClick={clickHandler('jersey_sleeves')}
+        className={`cursor-pointer transition-all ${sel('jersey_sleeves')}`}
+      >
         <path
           d="M260,80 Q270,70 272,100 L262,140 Q250,120 235,100 Z"
           fill={sleeves.fill}
           stroke="rgba(0,0,0,0.12)"
           strokeWidth="0.8"
         />
+        {/* Cuff */}
         <path
           d="M272,100 L262,140 L257,138 L267,100Z"
           fill={lightenDarken(getColor('jersey_sleeves'), -25)}
@@ -73,14 +83,14 @@ export function JerseyBack({
         />
       </g>
 
-      {/* Back body */}
+      {/* Main body */}
       <g
-        onClick={clickHandler('jersey_back')}
-        className={`cursor-pointer transition-all ${sel('jersey_back')}`}
+        onClick={clickHandler('jersey_body')}
+        className={`cursor-pointer transition-all ${sel('jersey_body')}`}
       >
         <path
-          d="M85,45 Q75,50 45,80 L45,100 L85,100 L85,310 L195,310 L195,100 L235,100 L235,80 Q205,50 195,45 Q175,35 165,30 Q155,22 140,20 Q125,22 115,30 Q105,35 85,45Z"
-          fill={back.fill}
+          d="M85,45 Q75,50 45,80 L45,100 L85,100 L85,310 L195,310 L195,100 L235,100 L235,80 Q205,50 195,45 Q175,35 165,30 Q155,55 140,60 Q125,55 115,30 Q105,35 85,45Z"
+          fill={body.fill}
           stroke="rgba(0,0,0,0.12)"
           strokeWidth="0.8"
         />
@@ -105,39 +115,51 @@ export function JerseyBack({
         />
       </g>
 
-      {/* Pockets */}
-      <g
-        onClick={clickHandler('jersey_pockets')}
-        className={`cursor-pointer transition-all ${sel('jersey_pockets')}`}
-      >
-        <rect
-          x="97"
-          y="268"
-          width="86"
-          height="40"
-          rx="3"
-          fill={pockets.fill}
-          stroke="rgba(0,0,0,0.12)"
-          strokeWidth="0.8"
-        />
-        {/* Pocket dividers */}
-        <line x1="126" y1="268" x2="126" y2="308" stroke="rgba(0,0,0,0.1)" strokeWidth="0.8" />
-        <line x1="155" y1="268" x2="155" y2="308" stroke="rgba(0,0,0,0.1)" strokeWidth="0.8" />
-        {/* Pocket top seam */}
-        <line x1="97" y1="276" x2="183" y2="276" stroke="rgba(0,0,0,0.1)" strokeWidth="0.5" />
-      </g>
-
-      {/* Back collar */}
+      {/* Collar + zip */}
       <g
         onClick={clickHandler('jersey_collar')}
         className={`cursor-pointer transition-all ${sel('jersey_collar')}`}
       >
         <path
-          d="M115,30 Q125,14 140,12 Q155,14 165,30 Q155,22 140,20 Q125,22 115,30Z"
+          d="M115,30 Q125,55 140,60 Q155,55 165,30 Q155,22 140,20 Q125,22 115,30Z"
           fill={collar.fill}
           stroke="rgba(0,0,0,0.15)"
           strokeWidth="0.8"
         />
+        {/* Zip */}
+        <line
+          x1="140"
+          y1="60"
+          x2="140"
+          y2="230"
+          stroke={lightenDarken(collarColor, 50)}
+          strokeWidth="1.5"
+          opacity="0.45"
+        />
+        {/* Zip pull */}
+        <rect
+          x="135"
+          y="228"
+          width="10"
+          height="7"
+          rx="2"
+          fill={lightenDarken(collarColor, 25)}
+          stroke="rgba(0,0,0,0.2)"
+          strokeWidth="0.5"
+        />
+        {/* Zip teeth */}
+        {[80, 100, 120, 140, 160, 180, 200].map((y) => (
+          <line
+            key={y}
+            x1="138"
+            y1={y}
+            x2="142"
+            y2={y}
+            stroke={lightenDarken(collarColor, 40)}
+            strokeWidth="0.8"
+            opacity="0.3"
+          />
+        ))}
       </g>
 
       {/* Bottom hem */}
@@ -147,11 +169,15 @@ export function JerseyBack({
         width="110"
         height="10"
         rx="2"
-        fill={lightenDarken(getColor('jersey_back'), -18)}
+        fill={lightenDarken(getColor('jersey_body'), -18)}
         stroke="none"
-        onClick={clickHandler('jersey_back')}
+        onClick={clickHandler('jersey_body')}
         className="cursor-pointer"
       />
+
+      {/* Seam lines */}
+      <line x1="45" y1="80" x2="45" y2="100" stroke="rgba(0,0,0,0.06)" strokeWidth="0.5" />
+      <line x1="235" y1="80" x2="235" y2="100" stroke="rgba(0,0,0,0.06)" strokeWidth="0.5" />
     </svg>
   )
 }

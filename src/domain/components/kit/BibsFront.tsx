@@ -1,7 +1,7 @@
 'use client'
 
-import { PatternDef } from '@/types/types'
-import { lightenDarken } from '@/lib'
+import { PatternDef } from '@/domain/lib/types'
+import { lightenDarken } from '@/domain/lib/colorUtils'
 
 interface BibsFrontProps {
   getColor: (id: string) => string
@@ -10,7 +10,7 @@ interface BibsFrontProps {
   onPartClick: (id: string) => void
 }
 
-export function BibsFront({
+export default function BibsFront({
   getColor,
   getPatFill,
   selectedPart,

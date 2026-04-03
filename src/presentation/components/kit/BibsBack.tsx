@@ -1,7 +1,7 @@
 'use client'
 
 import { PatternDef } from '@/types/types'
-import { lightenDarken } from '@/lib/colorUtils'
+import { lightenDarken } from '@/lib'
 
 interface BibsBackProps {
   getColor: (id: string) => string

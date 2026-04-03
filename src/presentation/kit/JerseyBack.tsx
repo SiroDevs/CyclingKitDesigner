@@ -1,7 +1,7 @@
 'use client'
 
 import { PatternDef } from '@/types/types'
-import { lightenDarken } from '@/lib'
+import { lightenDarken } from '@/lib/colorUtils'
 
 interface JerseyBackProps {
   getColor: (id: string) => string

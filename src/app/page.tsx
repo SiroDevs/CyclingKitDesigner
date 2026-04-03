@@ -1,5 +1,5 @@
-import DesignerPage from "@/presentation/layout/DesignerPage";
+import { DesignerPage } from "@/presentation/layout/DesignerPage";
 
 export default function Home() {
-  return <DesignerPage />
+  return <DesignerPage />;
 }

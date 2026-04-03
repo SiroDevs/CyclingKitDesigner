@@ -1,4 +1,4 @@
-import { ColorHSL } from "@/types/types"
+import { ColorHSL } from './types'
 
 export function hslToHex(h: number, s: number, l: number): string {
   s /= 100

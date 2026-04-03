@@ -1,4 +1,4 @@
-import { KitPart, KitPreset, PatternType } from '@/types/types'
+import { KitPart, KitPreset, PatternType } from './types'
 
 export const JERSEY_PARTS: KitPart[] = [
   { id: 'jersey_body', label: 'Body', defaultColor: '#FFFFFF' },

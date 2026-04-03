@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { PatternType } from '@/types/types'
-import { hslToHex, hexToHsl, isValidHex } from '@/lib'
-import { QUICK_SWATCHES, PATTERNS } from '@/lib'
+import { hslToHex, hexToHsl, isValidHex } from '@/lib/colorUtils'
+import { QUICK_SWATCHES, PATTERNS } from '@/lib/constants'
 import { SLPicker } from '.'
 
 interface ColorPanelProps {

@@ -1,21 +1,21 @@
 'use client'
 
-import { PatternDef } from '@/types/types'
-import { lightenDarken } from '@/lib'
+import { PatternDef } from '@/domain/lib/types'
+import { lightenDarken } from '@/domain/lib/colorUtils'
 
-interface BibsFrontProps {
+interface BibsBackProps {
   getColor: (id: string) => string
   getPatFill: (id: string) => PatternDef
   selectedPart: string | null
   onPartClick: (id: string) => void
 }
 
-export function BibsFront({
+export default function BibsBack({
   getColor,
   getPatFill,
   selectedPart,
   onPartClick,
-}: BibsFrontProps) {
+}: BibsBackProps) {
   const main = getPatFill('bibs_main')
   const straps = getPatFill('bibs_straps')
   const pad = getPatFill('bibs_pad')
@@ -77,47 +77,40 @@ export function BibsFront({
         />
       </g>
 
-      {/* Straps */}
+      {/* Back strap - wider panel */}
       <g
         onClick={clickHandler('bibs_straps')}
         className={`cursor-pointer transition-all ${sel('bibs_straps')}`}
       >
         <path
-          d="M80,82 Q84,52 93,22 Q98,8 104,6 L116,6 Q113,20 109,82Z"
-          fill={straps.fill}
-          stroke="rgba(0,0,0,0.12)"
-          strokeWidth="0.8"
-        />
-        <path
-          d="M160,82 Q156,52 147,22 Q142,8 136,6 L124,6 Q127,20 131,82Z"
+          d="M78,82 Q80,52 88,22 Q93,8 100,6 L140,6 Q147,8 152,22 Q160,52 162,82Z"
           fill={straps.fill}
           stroke="rgba(0,0,0,0.12)"
           strokeWidth="0.8"
         />
       </g>
 
-      {/* Chamois */}
+      {/* Back chamois (larger) */}
       <g
         onClick={clickHandler('bibs_pad')}
         className={`cursor-pointer transition-all ${sel('bibs_pad')}`}
       >
         <ellipse
           cx="120"
-          cy="222"
-          rx="40"
-          ry="30"
+          cy="185"
+          rx="48"
+          ry="42"
           fill={pad.fill}
           stroke="rgba(0,0,0,0.15)"
           strokeWidth="0.8"
           strokeDasharray="3,2"
         />
-        {/* Pad texture */}
-        {[-16, -8, 0, 8, 16].map((dx) =>
-          [-10, 0, 10].map((dy) => (
+        {[-18, -9, 0, 9, 18].map((dx) =>
+          [-14, -5, 5, 14].map((dy) => (
             <circle
               key={`${dx}-${dy}`}
               cx={120 + dx}
-              cy={222 + dy}
+              cy={185 + dy}
               r="1.5"
               fill="rgba(255,255,255,0.07)"
             />

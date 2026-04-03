@@ -1,6 +1,6 @@
 'use client'
 
-import { KIT_PRESETS } from '@/lib'
+import { KIT_PRESETS } from '@/lib/constants'
 
 interface KitPresetsProps {
   onApplyPreset: (index: number) => void

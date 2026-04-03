@@ -1,5 +1,5 @@
-import { PatternType, PatternDef } from '@/types/types'
-import { lightenDarken } from '.'
+import { PatternType, PatternDef } from './types'
+import { lightenDarken } from './colorUtils'
 
 export function getPatternDef(
   partId: string,

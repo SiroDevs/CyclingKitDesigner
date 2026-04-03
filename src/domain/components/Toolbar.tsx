@@ -1,6 +1,6 @@
 'use client'
 
-import { KitType, ViewType } from '@/types/types'
+import { KitType, ViewType } from '@/domain/lib/types'
 
 interface ToolbarProps {
   kit: KitType
@@ -39,7 +39,7 @@ function SegmentedControl<T extends string>({
   )
 }
 
-export function Toolbar({
+export default function Toolbar({
   kit,
   view,
   onKitChange,

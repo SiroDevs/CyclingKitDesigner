@@ -1,12 +1,12 @@
 'use client'
 
-import { KIT_PRESETS } from '@/lib'
+import { KIT_PRESETS } from '@/domain/lib/constants'
 
 interface KitPresetsProps {
   onApplyPreset: (index: number) => void
 }
 
-export function KitPresets({ onApplyPreset }: KitPresetsProps) {
+export default function KitPresets({ onApplyPreset }: KitPresetsProps) {
   return (
     <div className="p-3">
       <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-2.5">
