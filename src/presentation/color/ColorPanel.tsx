@@ -65,7 +65,6 @@ export function ColorPanel({
 
   return (
     <div className="flex flex-col gap-4 p-4 overflow-y-auto">
-      {/* Header */}
       <div className="flex items-center gap-3">
         <div
           className="w-8 h-8 rounded-lg border flex-shrink-0"
@@ -80,7 +79,6 @@ export function ColorPanel({
         </div>
       </div>
 
-      {/* SL Picker */}
       <SLPicker
         hue={hsl.h}
         saturation={hsl.s}
@@ -88,7 +86,6 @@ export function ColorPanel({
         onChange={(s, l) => updateFromHsl(hsl.h, s, l)}
       />
 
-      {/* Hue slider */}
       <div>
         <label className="text-xs text-gray-400 mb-1.5 block">Hue</label>
         <input
@@ -101,7 +98,6 @@ export function ColorPanel({
         />
       </div>
 
-      {/* Hex input */}
       <div>
         <label className="text-xs text-gray-400 mb-1.5 block">Hex Code</label>
         <div className="flex gap-2 items-center">

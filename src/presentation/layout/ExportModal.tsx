@@ -223,7 +223,6 @@ export function ExportModal({ isOpen, onClose, onExport }: ExportModalProps) {
             )}
           </div>
 
-          {/* Error */}
           {error && (
             <div className="px-3 py-2 bg-red-50 rounded-lg border border-red-100 text-xs text-red-600">
               {error}
@@ -231,7 +230,6 @@ export function ExportModal({ isOpen, onClose, onExport }: ExportModalProps) {
           )}
         </div>
 
-        {/* Footer */}
         <div className="px-5 pb-5 flex gap-2">
           <button
             onClick={onClose}
