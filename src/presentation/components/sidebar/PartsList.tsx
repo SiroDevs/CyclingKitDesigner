@@ -30,7 +30,6 @@ export function PartsList({
                 : 'hover:bg-gray-50'
             }`}
           >
-            {/* Color swatch */}
             <div
               className="w-6 h-6 rounded-md flex-shrink-0"
               style={{
@@ -38,11 +37,9 @@ export function PartsList({
                 border: '1px solid rgba(0,0,0,0.1)',
               }}
             />
-            {/* Label */}
             <span className={`text-sm ${isSelected ? 'font-medium text-gray-900' : 'text-gray-700'}`}>
               {part.label}
             </span>
-            {/* Arrow */}
             {isSelected && (
               <svg
                 className="ml-auto w-3.5 h-3.5 text-gray-400"

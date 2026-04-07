@@ -16,20 +16,19 @@ export function JerseyBack({
   selectedPart,
   onPartClick,
 }: JerseyBackProps) {
-  const back = getPatFill('jersey_back')
-  const sleeves = getPatFill('jersey_sleeves')
-  const collar = getPatFill('jersey_collar')
-  const side = getPatFill('jersey_side_panels')
-  const pockets = getPatFill('jersey_pockets')
+  const back = getPatFill('jersey_back');
+  const sleeves = getPatFill('jersey_sleeves');
+  const collar = getPatFill('jersey_collar');
+  const side = getPatFill('jersey_side_panels');
+  const pockets = getPatFill('jersey_pockets');
 
   const allDefs = [back.defs, sleeves.defs, collar.defs, side.defs, pockets.defs]
     .filter(Boolean)
-    .join('')
-
+    .join('');
   const sel = (id: string) =>
     selectedPart === id
       ? 'opacity-85 drop-shadow-[0_0_4px_rgba(0,120,255,0.6)]'
-      : ''
+      : '';
 
   const clickHandler = (id: string) => (e: React.MouseEvent) => {
     e.stopPropagation()

@@ -1,4 +1,4 @@
-export type KitType = 'jersey' | 'bibs'
+export type KitType = 'jersey' | 'shorts'
 export type ViewType = 'front' | 'back'
 export type PatternType = 'Solid' | 'Stripes' | 'Diamonds' | 'Gradient' | 'Camo' | 'Checkers'
 

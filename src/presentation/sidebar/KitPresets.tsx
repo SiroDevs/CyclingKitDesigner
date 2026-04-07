@@ -19,12 +19,11 @@ export function KitPresets({ onApplyPreset }: KitPresetsProps) {
             onClick={() => onApplyPreset(i)}
             className="flex flex-col items-center gap-1.5 p-2 rounded-xl border border-gray-100 hover:border-gray-300 hover:bg-gray-50 transition-all group"
           >
-            {/* Color dots */}
             <div className="flex gap-1">
               {[
                 preset.colors.jersey_body ?? '#fff',
                 preset.colors.jersey_side_panels ?? '#eee',
-                preset.colors.bibs_main ?? '#111',
+                preset.colors.shorts_main ?? '#111',
               ].map((color, ci) => (
                 <div
                   key={ci}

@@ -193,7 +193,7 @@ export function ExportModal({ isOpen, onClose, onExport }: ExportModalProps) {
             <div className="flex gap-2">
               {[
                 { value: false, label: 'Current view',  desc: 'Just what you see now' },
-                { value: true,  label: 'All 4 views',   desc: 'Jersey + Bibs, front + back' },
+                { value: true,  label: 'All 4 views',   desc: 'Jersey + Shorts, front + back' },
               ].map((opt) => (
                 <button
                   key={String(opt.value)}

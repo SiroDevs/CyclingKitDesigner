@@ -1,7 +1,10 @@
 "use client";
 
 import { KitType, ViewType, PatternDef } from "@/types/types";
-import { JerseyFront, JerseyBack, BibsFront, BibsBack } from ".";
+import { JerseyFront } from "./jersey-front/panel";
+import { JerseyBack } from "./jersey-back/JerseyBack";
+import { ShortsFront } from "./ShortsFront";
+import { ShortsBack } from "./ShortsBack";
 
 interface KitCanvasProps {
   kit: KitType;
@@ -26,8 +29,32 @@ export function KitCanvas({
     <div className="w-full max-w-[320px] mx-auto">
       {kit === "jersey" && view === "front" && <JerseyFront {...props} />}
       {kit === "jersey" && view === "back" && <JerseyBack {...props} />}
-      {kit === "bibs" && view === "front" && <BibsFront {...props} />}
-      {kit === "bibs" && view === "back" && <BibsBack {...props} />}
+      {kit === "shorts" && view === "front" && <ShortsFront {...props} />}
+      {kit === "shorts" && view === "back" && <ShortsBack {...props} />}
     </div>
   );
 }
+
+export const SelectablePart = ({ 
+  id, 
+  isSelected, 
+  onClick, 
+  children 
+}: { 
+  id: string
+  isSelected: boolean
+  onClick: (id: string) => void
+  children: React.ReactNode
+}) => (
+  <g
+    onClick={(e) => {
+      e.stopPropagation()
+      onClick(id)
+    }}
+    className={`cursor-pointer transition-all ${
+      isSelected ? 'opacity-85 drop-shadow-[0_0_4px_rgba(0,120,255,0.6)]' : ''
+    }`}
+  >
+    {children}
+  </g>
+)

@@ -1,5 +1,5 @@
 import { DesignerState, KitType, ViewType, PatternType } from '@/types/types'
-import { JERSEY_PARTS, BIBS_PARTS, KIT_PRESETS } from '.'
+import { JERSEY_PARTS, SHORTS_PARTS, KIT_PRESETS } from '.'
 
 export type DesignerAction =
   | { type: 'SET_KIT'; payload: KitType }
@@ -12,7 +12,7 @@ export type DesignerAction =
 
 export function getDefaultColors(): Record<string, string> {
   const colors: Record<string, string> = {}
-  ;[...JERSEY_PARTS, ...BIBS_PARTS].forEach((p) => {
+  ;[...JERSEY_PARTS, ...SHORTS_PARTS].forEach((p) => {
     colors[p.id] = p.defaultColor
   })
   return colors

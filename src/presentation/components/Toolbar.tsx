@@ -48,8 +48,7 @@ export function Toolbar({
   onExport,
 }: ToolbarProps) {
   return (
-    <header className="flex items-center justify-between px-5 py-3 border-b border-gray-100 bg-white">
-      {/* Logo */}
+    <header className="flex items-center justify-between px-5 py-3 border-b border-gray-100 bg-white dark:bg-[#1d1d20] shadow-xs">
       <div className="flex items-center gap-2.5">
         <div className="w-7 h-7 bg-gray-900 rounded-lg flex items-center justify-center">
           <svg viewBox="0 0 24 24" className="w-4 h-4 text-white fill-current">
@@ -62,12 +61,11 @@ export function Toolbar({
         </span>
       </div>
 
-      {/* Center controls */}
       <div className="flex items-center gap-3">
         <SegmentedControl
           options={[
             { label: 'Jersey', value: 'jersey' as KitType },
-            { label: 'Bib Shorts', value: 'bibs' as KitType },
+            { label: 'Shorts', value: 'shorts' as KitType },
           ]}
           value={kit}
           onChange={onKitChange}
@@ -83,7 +81,6 @@ export function Toolbar({
         />
       </div>
 
-      {/* Actions */}
       <div className="flex items-center gap-2">
         <button
           onClick={onReset}

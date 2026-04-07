@@ -1,7 +1,7 @@
 'use client'
 
 import { KitType, ViewType, PatternDef } from '@/types/types'
-import { BibsBack, BibsFront, JerseyBack, JerseyFront } from '.'
+import { ShortsBack, ShortsFront, JerseyBack, JerseyFront } from '.'
 
 interface KitCanvasProps {
   kit: KitType
@@ -26,8 +26,8 @@ export function KitCanvas({
     <div className="w-full max-w-[320px] mx-auto">
       {kit === 'jersey' && view === 'front' && <JerseyFront {...props} />}
       {kit === 'jersey' && view === 'back' && <JerseyBack {...props} />}
-      {kit === 'bibs' && view === 'front' && <BibsFront {...props} />}
-      {kit === 'bibs' && view === 'back' && <BibsBack {...props} />}
+      {kit === 'shorts' && view === 'front' && <ShortsFront {...props} />}
+      {kit === 'shorts' && view === 'back' && <ShortsBack {...props} />}
     </div>
   )
 }

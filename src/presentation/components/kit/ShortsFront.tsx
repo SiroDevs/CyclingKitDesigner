@@ -3,23 +3,23 @@
 import { PatternDef } from '@/types/types'
 import { lightenDarken } from '@/lib'
 
-interface BibsFrontProps {
+interface ShortsFrontProps {
   getColor: (id: string) => string
   getPatFill: (id: string) => PatternDef
   selectedPart: string | null
   onPartClick: (id: string) => void
 }
 
-export function BibsFront({
+export function ShortsFront({
   getColor,
   getPatFill,
   selectedPart,
   onPartClick,
-}: BibsFrontProps) {
-  const main = getPatFill('bibs_main')
-  const straps = getPatFill('bibs_straps')
-  const pad = getPatFill('bibs_pad')
-  const side = getPatFill('bibs_side')
+}: ShortsFrontProps) {
+  const main = getPatFill('shorts_main')
+  const straps = getPatFill('shorts_straps')
+  const pad = getPatFill('shorts_pad')
+  const side = getPatFill('shorts_side')
 
   const allDefs = [main.defs, straps.defs, pad.defs, side.defs]
     .filter(Boolean)
@@ -35,7 +35,7 @@ export function BibsFront({
     onPartClick(id)
   }
 
-  const mainColor = getColor('bibs_main')
+  const mainColor = getColor('shorts_main')
 
   return (
     <svg
@@ -47,8 +47,8 @@ export function BibsFront({
 
       {/* Main shorts */}
       <g
-        onClick={clickHandler('bibs_main')}
-        className={`cursor-pointer transition-all ${sel('bibs_main')}`}
+        onClick={clickHandler('shorts_main')}
+        className={`cursor-pointer transition-all ${sel('shorts_main')}`}
       >
         <path
           d="M48,82 L48,228 Q48,250 68,256 L100,260 L120,198 L140,260 L172,256 Q192,250 192,228 L192,82Z"
@@ -60,8 +60,8 @@ export function BibsFront({
 
       {/* Side panels */}
       <g
-        onClick={clickHandler('bibs_side')}
-        className={`cursor-pointer transition-all ${sel('bibs_side')}`}
+        onClick={clickHandler('shorts_side')}
+        className={`cursor-pointer transition-all ${sel('shorts_side')}`}
       >
         <path
           d="M48,82 L48,228 Q48,250 68,256 L80,258 L80,82Z"
@@ -79,8 +79,8 @@ export function BibsFront({
 
       {/* Straps */}
       <g
-        onClick={clickHandler('bibs_straps')}
-        className={`cursor-pointer transition-all ${sel('bibs_straps')}`}
+        onClick={clickHandler('shorts_straps')}
+        className={`cursor-pointer transition-all ${sel('shorts_straps')}`}
       >
         <path
           d="M80,82 Q84,52 93,22 Q98,8 104,6 L116,6 Q113,20 109,82Z"
@@ -98,8 +98,8 @@ export function BibsFront({
 
       {/* Chamois */}
       <g
-        onClick={clickHandler('bibs_pad')}
-        className={`cursor-pointer transition-all ${sel('bibs_pad')}`}
+        onClick={clickHandler('shorts_pad')}
+        className={`cursor-pointer transition-all ${sel('shorts_pad')}`}
       >
         <ellipse
           cx="120"
@@ -135,7 +135,7 @@ export function BibsFront({
         fill={lightenDarken(mainColor, -12)}
         stroke="rgba(0,0,0,0.1)"
         strokeWidth="0.5"
-        onClick={clickHandler('bibs_main')}
+        onClick={clickHandler('shorts_main')}
         className="cursor-pointer"
       />
 

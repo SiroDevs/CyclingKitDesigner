@@ -108,7 +108,7 @@ export async function exportSVG(svgEl: SVGElement, opts: ExportOptions): Promise
 }
 
 /**
- * Export ALL four views (jersey front/back + bibs front/back) as a
+ * Export ALL four views (jersey front/back + shorts front/back) as a
  * multi-page PDF or a zip of PNGs/JPGs.
  */
 export async function exportAllViews(
