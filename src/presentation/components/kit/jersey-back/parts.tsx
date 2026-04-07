@@ -1,8 +1,7 @@
 'use client'
 
-import { PatternDef } from '@/types/types'
-import { lightenDarken } from '@/lib'
-import { useMemo } from 'react'
+import { PatternDef } from '@/types/types';
+import { lightenDarken } from '@/lib';
 
 export interface JerseyBackProps {
   getColor: (id: string) => string

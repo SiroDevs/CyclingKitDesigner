@@ -2,9 +2,9 @@
 
 import { KitType, ViewType, PatternDef } from "@/types/types";
 import { JerseyFront } from "./jersey-front/panel";
-import { JerseyBack } from "./jersey-back/JerseyBack";
 import { ShortsFront } from "./ShortsFront";
 import { ShortsBack } from "./ShortsBack";
+import { JerseyBack } from "./jersey-back/panel";
 
 interface KitCanvasProps {
   kit: KitType;
@@ -35,17 +35,21 @@ export function KitCanvas({
   );
 }
 
+'use client'
+
+interface SelectablePartProps {
+  id: string
+  isSelected: boolean
+  onClick: (id: string) => void
+  children: React.ReactNode
+}
+
 export const SelectablePart = ({ 
   id, 
   isSelected, 
   onClick, 
   children 
-}: { 
-  id: string
-  isSelected: boolean
-  onClick: (id: string) => void
-  children: React.ReactNode
-}) => (
+}: SelectablePartProps) => (
   <g
     onClick={(e) => {
       e.stopPropagation()
