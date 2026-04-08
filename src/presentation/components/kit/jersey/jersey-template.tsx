@@ -78,7 +78,7 @@ export function JerseyTemplate({
       </SelectablePart>
 
       {/* Main body */}
-      <SelectablePart
+      {/* <SelectablePart
         id={partKeys.BODY || partKeys.BACK}
         isSelected={isSelected(partKeys.BODY || partKeys.BACK)}
         onClick={onPartClick}
@@ -89,10 +89,10 @@ export function JerseyTemplate({
           stroke="rgba(0,0,0,0.12)"
           strokeWidth="0.8"
         />
-      </SelectablePart>
+      </SelectablePart> */}
 
       {/* Side panels */}
-      {hasSidePanels && patterns.side && (
+      {/* {hasSidePanels && patterns.side && (
         <SelectablePart
           id={partKeys.SIDE_PANELS}
           isSelected={isSelected(partKeys.SIDE_PANELS)}
@@ -101,7 +101,7 @@ export function JerseyTemplate({
           <SidePanel position="left" fill={patterns.side.fill} />
           <SidePanel position="right" fill={patterns.side.fill} />
         </SelectablePart>
-      )}
+      )} */}
 
       {/* Specific parts (collar, pockets, zip, etc.) */}
       {renderSpecificParts({ patterns, colors, isSelected, onPartClick })}

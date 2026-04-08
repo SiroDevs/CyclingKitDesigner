@@ -13,7 +13,6 @@ export function JerseyFront(props: JerseyBaseProps) {
       hasSeamLines={true}
       renderSpecificParts={({ patterns, colors, isSelected, onPartClick }) => (
         <g>
-          {/* Collar with zip */}
           <g
             onClick={(e) => {
               e.stopPropagation()
@@ -27,7 +26,7 @@ export function JerseyFront(props: JerseyBaseProps) {
           >
             <path
               d={FRONT_PATHS.collar}
-              fill={patterns.collar.fill}  // Use patterns from template
+              fill={patterns.collar.fill}
               stroke="rgba(0,0,0,0.15)"
               strokeWidth="0.8"
             />

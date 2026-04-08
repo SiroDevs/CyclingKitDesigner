@@ -1,6 +1,7 @@
 'use client'
 
 import { lightenDarken } from "@/lib"
+import { JERSEY_PATHS } from "."
 
 export const FRONT_PARTS = {
   BODY: 'jersey_body',
@@ -11,7 +12,7 @@ export const FRONT_PARTS = {
 
 export const FRONT_PATHS = {
   body: 'M85,45 Q75,50 45,80 L45,100 L85,100 L85,310 L195,310 L195,100 L235,100 L235,80 Q205,50 195,45 Q175,35 165,30 Q155,55 140,60 Q125,55 115,30 Q105,35 85,45Z',
-  collar: 'M115,30 Q125,55 140,60 Q155,55 165,30 Q155,22 140,20 Q125,22 115,30Z',
+  collar: JERSEY_PATHS.frontCollar,
   zipLine: { x1: 140, y1: 60, x2: 140, y2: 295 },
   zipPull: { x: 135, y: 295, width: 10, height: 7, rx: 2 },
 } as const
