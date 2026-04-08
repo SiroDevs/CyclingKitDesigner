@@ -1,12 +1,12 @@
 'use client'
 
 import { useMemo } from 'react'
-import { JerseyBaseProps, Sleeve, SidePanel, BottomHem, SeamLines } from './shared'
+import { JerseyBaseProps, Sleeve, SidePanel, BottomHem, SeamLines } from '.'
 import { SelectablePart } from '../KitCanvas'
 
 interface JerseyTemplateProps extends JerseyBaseProps {
   partKeys: Record<string, string>
-  patterns: Record<string, any>
+  additionalPatterns?: Record<string, any>
   renderSpecificParts: (props: {
     patterns: Record<string, any>
     colors: Record<string, string>
@@ -25,7 +25,7 @@ export function JerseyTemplate({
   selectedPart,
   onPartClick,
   partKeys,
-  patterns: customPatterns,
+  additionalPatterns = {},
   renderSpecificParts,
   bodyPath,
   collarPath,
@@ -37,17 +37,16 @@ export function JerseyTemplate({
       body: getPatFill(partKeys.BODY || partKeys.BACK),
       sleeves: getPatFill(partKeys.SLEEVES),
       collar: getPatFill(partKeys.COLLAR),
-      side: hasSidePanels ? getPatFill(partKeys.SIDE_PANELS) : null,
-      ...customPatterns,
+      side: hasSidePanels && partKeys.SIDE_PANELS ? getPatFill(partKeys.SIDE_PANELS) : null,
+      ...additionalPatterns,
     }
     return base
-  }, [getPatFill, partKeys, customPatterns, hasSidePanels])
+  }, [getPatFill, partKeys, additionalPatterns, hasSidePanels])
 
   const allDefs = useMemo(() => 
     Object.values(patterns)
-      .filter(p => p?.defs)
+      .filter((p): p is NonNullable<typeof p> => p !== null && p !== undefined && Boolean(p.defs))
       .map(p => p.defs)
-      .filter(Boolean)
       .join(''),
     [patterns]
   )

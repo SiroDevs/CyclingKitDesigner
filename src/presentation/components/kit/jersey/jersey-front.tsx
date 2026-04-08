@@ -1,8 +1,7 @@
 'use client'
 
-import { JerseyBaseProps } from './shared'
-import { JerseyTemplate } from './jersey-template'
-import { FRONT_PARTS, FRONT_PATHS, ZipDetail } from './front-config'
+import { JerseyBaseProps, JerseyTemplate } from '.'
+import { FRONT_PARTS, FRONT_PATHS, ZipDetail } from '.'
 
 export function JerseyFront(props: JerseyBaseProps) {
   return (
@@ -12,7 +11,7 @@ export function JerseyFront(props: JerseyBaseProps) {
       bodyPath={FRONT_PATHS.body}
       collarPath={FRONT_PATHS.collar}
       hasSeamLines={true}
-      renderSpecificParts={({ colors, isSelected, onPartClick }) => (
+      renderSpecificParts={({ patterns, colors, isSelected, onPartClick }) => (
         <g>
           {/* Collar with zip */}
           <g
@@ -28,7 +27,7 @@ export function JerseyFront(props: JerseyBaseProps) {
           >
             <path
               d={FRONT_PATHS.collar}
-              fill={props.getPatFill(FRONT_PARTS.COLLAR).fill}
+              fill={patterns.collar.fill}  // Use patterns from template
               stroke="rgba(0,0,0,0.15)"
               strokeWidth="0.8"
             />

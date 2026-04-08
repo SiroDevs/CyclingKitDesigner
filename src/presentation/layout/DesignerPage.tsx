@@ -1,21 +1,20 @@
 'use client'
 
-import { useReducer, useCallback, useRef, useState } from 'react'
-import { designerReducer, initialState } from '@/lib/designerReducer'
-import { JERSEY_PARTS, SHORTS_PARTS } from '@/lib/constants'
-import { PatternType } from '@/types/types'
-import { getPatternDef } from '@/lib/patternUtils'
-import { exportSVG, exportAllViews, ExportFormat } from '@/lib/exportUtils'
+import { useReducer, useCallback, useRef, useState } from 'react';
+import { designerReducer, initialState } from '@/lib/designerReducer';
+import { JERSEY_PARTS, SHORTS_PARTS } from '@/lib/constants';
+import { PatternType } from '@/types/types';
+import { getPatternDef } from '@/lib/patternUtils';
+import { exportSVG, exportAllViews, ExportFormat } from '@/lib/exportUtils';
 import { Toolbar } from "../components/Toolbar";
 import { PartsList, KitPresets } from "../components/sidebar";
 import { ExportModal } from "./ExportModal";
-import { ColorPanel } from '../color'
-import { SelectAPart } from '../sidebar'
-import { JerseyFront } from '../components/kit/jersey-front/panel'
-import { KitCanvas } from '../kit/KitCanvas'
-import { JerseyBack } from '../components/kit/jersey-back/JerseyBack'
-import { ShortsFront } from '../components/kit/ShortsFront'
-import { ShortsBack } from '../components/kit/ShortsBack'
+import { ColorPanel } from '../color';
+import { SelectAPart } from '../sidebar';
+import { ShortsFront } from '../components/kit/ShortsFront';
+import { ShortsBack } from '../components/kit/ShortsBack';
+import { KitCanvas } from '../components/kit/KitCanvas';
+import { JerseyFront, JerseyBack } from '../components/kit/jersey';
 
 export function DesignerPage() {
   const [state, dispatch] = useReducer(designerReducer, initialState)

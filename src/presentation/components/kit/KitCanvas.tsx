@@ -1,10 +1,9 @@
 "use client";
 
 import { KitType, ViewType, PatternDef } from "@/types/types";
-import { JerseyFront } from "./jersey-front/panel";
 import { ShortsFront } from "./ShortsFront";
 import { ShortsBack } from "./ShortsBack";
-import { JerseyBack } from "./jersey-back/panel";
+import { JerseyFront, JerseyBack } from "./jersey";
 
 interface KitCanvasProps {
   kit: KitType;
@@ -34,8 +33,6 @@ export function KitCanvas({
     </div>
   );
 }
-
-'use client'
 
 interface SelectablePartProps {
   id: string

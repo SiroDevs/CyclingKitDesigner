@@ -31,3 +31,24 @@ export interface PatternDef {
   fill: string
   defs: string
 }
+
+export interface JerseyPattern {
+  fill: string
+  defs?: string
+}
+
+export interface JerseyPatterns {
+  body: JerseyPattern
+  sleeves: JerseyPattern
+  collar: JerseyPattern
+  side?: JerseyPattern | null
+  pockets?: JerseyPattern
+  [key: string]: JerseyPattern | null | undefined
+}
+
+export interface JerseyColors {
+  sleeves: string
+  body: string
+  collar: string
+  [key: string]: string
+}
